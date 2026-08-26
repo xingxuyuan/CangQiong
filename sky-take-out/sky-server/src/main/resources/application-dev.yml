@@ -6,8 +6,8 @@ sky:
     password: 123
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: LTAI5tAhNyhjMfSBRxE2EdAh
-    access-key-secret: Yyo7fcHcwfpXQpkKUniaq8NuwTC5gM
+    access-key-id: 111
+    access-key-secret: 111
     bucket-name: sky-take-out-xingxuyuan
   jwt:
     admin-secret-key: itcast
