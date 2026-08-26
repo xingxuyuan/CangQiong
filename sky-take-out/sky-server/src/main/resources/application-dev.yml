@@ -1,8 +1,15 @@
 sky:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    host: localhost
-    port: 3306
-    database: sky_take_out
-    username: root
-    password: root
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:ORCL
+    username: sky_take_out
+    password: 123
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: LTAI5tAhNyhjMfSBRxE2EdAh
+    access-key-secret: Yyo7fcHcwfpXQpkKUniaq8NuwTC5gM
+    bucket-name: sky-take-out-xingxuyuan
+  jwt:
+    admin-secret-key: itcast
+    admin-ttl: 7200000
+    admin-token-name: token
