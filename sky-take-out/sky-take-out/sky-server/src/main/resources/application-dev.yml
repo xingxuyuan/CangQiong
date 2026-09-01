@@ -1,0 +1,15 @@
+sky:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:ORCL
+    username: sky_take_out
+    password: 123
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: 111
+    access-key-secret: 111
+    bucket-name: sky-take-out-xingxuyuan
+  jwt:
+    admin-secret-key: itcast
+    admin-ttl: 7200000
+    admin-token-name: token
