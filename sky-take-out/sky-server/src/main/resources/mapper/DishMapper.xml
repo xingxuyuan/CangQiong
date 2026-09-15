@@ -4,7 +4,6 @@
 <mapper namespace="com.sky.mapper.DishMapper">
 
     <insert id="insert" parameterType="com.sky.entity.Dish">
-    
         <selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="id">
             SELECT seq_dish.NEXTVAL FROM DUAL
         </selectKey>
@@ -48,4 +47,22 @@
     <delete id="deleteById">
         delete from dish where id = #{id}
     </delete>
+
+    <!--用户端条件查询菜品列表 -->
+    <select id="list" resultType="com.sky.entity.Dish">
+        select * from dish
+        <where>
+            <if test="name != null and name != ''">
+                and name like '%' || #{name} || '%'
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
 </mapper>
