@@ -31,7 +31,7 @@ public class SetmealController {
      */
     @GetMapping("/list")
     @ApiOperation("根据分类id查询套餐")
-    @Cacheable(cacheNames = "setmealCache", key = "#categoryId") // 👈 新增：存入缓存
+    @Cacheable(cacheNames = "setmealCache", key = "#categoryId") //存入缓存
     public Result<List<Setmeal>> list(Long categoryId) {
         log.info("根据分类id查询套餐：{}", categoryId);
         
