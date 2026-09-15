@@ -4,12 +4,25 @@ sky:
     url: jdbc:oracle:thin:@localhost:1521:ORCL
     username: sky_take_out
     password: 123
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
     access-key-id: 111
     access-key-secret: 111
     bucket-name: sky-take-out-xingxuyuan
+  
+  wechat:
+    appid: wx1234567890abcdef   
+    secret: 1234567890abcdef1234567890abcdef
   jwt:
+  
     admin-secret-key: itcast
     admin-ttl: 7200000
     admin-token-name: token
+    
+    user-secret-key: itheima
+    user-ttl: 7200000
+    user-token-name: authentication
