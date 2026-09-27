@@ -10,7 +10,7 @@ import java.util.List;
 public interface ShoppingCartMapper {
     List<ShoppingCart> list(ShoppingCart shoppingCart);
 
-    @Update("update shopping_cart set number = #{number} where id = #{id}")
+    @Update("update shopping_cart set \"number\" = #{number} where id = #{id}")
     void updateNumberById(ShoppingCart shoppingCart);
 
     void insert(ShoppingCart shoppingCart);

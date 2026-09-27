@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.OrderDetailMapper">
+    <insert id="insertBatch">
+        INSERT INTO order_detail (id, name, image, order_id, dish_id, setmeal_id, dish_flavor, "number", amount)
+        SELECT seq_order_detail.NEXTVAL, A.* FROM (
+        <foreach collection="orderDetails" item="od" separator=" UNION ALL ">
+            SELECT #{od.name}, #{od.image}, #{od.orderId}, #{od.dishId, jdbcType=NULL}, #{od.setmealId, jdbcType=NULL}, #{od.dishFlavor, jdbcType=NULL}, #{od.number}, #{od.amount} FROM DUAL
+        </foreach>
+        ) A
+    </insert>
+</mapper>
