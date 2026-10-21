@@ -111,10 +111,33 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderStatisticsVO statistics() { return new OrderStatisticsVO(); }
+    public OrderStatisticsVO statistics() {
+        OrderStatisticsVO orderStatisticsVO = new OrderStatisticsVO();
+        
+        Map map1 = new HashMap();
+        map1.put("status", Orders.TO_BE_CONFIRMED);
+        orderStatisticsVO.setToBeConfirmed(orderMapper.countByMap(map1));
+
+        Map map2 = new HashMap();
+        map2.put("status", Orders.CONFIRMED);
+        orderStatisticsVO.setConfirmed(orderMapper.countByMap(map2));
+
+        Map map3 = new HashMap();
+        map3.put("status", Orders.DELIVERY_IN_PROGRESS);
+        orderStatisticsVO.setDeliveryInProgress(orderMapper.countByMap(map3));
+
+        return orderStatisticsVO;
+    }
 
     @Override
-    public OrderVO details(Long id) { return new OrderVO(); }
+    public OrderVO details(Long id) {
+        Orders orders = orderMapper.getById(id);
+        OrderVO orderVO = new OrderVO();
+        BeanUtils.copyProperties(orders, orderVO);
+        List<OrderDetail> orderDetailList = orderDetailMapper.getByOrderId(id);
+        orderVO.setOrderDetailList(orderDetailList);
+        return orderVO;
+    }
 
     @Override
     public void confirm(OrdersConfirmDTO ordersConfirmDTO) {
